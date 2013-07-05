@@ -1,0 +1,69 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1073" measuredH="728" mockupW="841" mockupH="707">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="232" y="21" w="841" h="707" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <text>nextfeed%0Ahttp%3A//nextfeed.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="290" y="93" w="724" h="607" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Canvas" x="290" y="208" w="519" h="492" measuredW="100" measuredH="70" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="572" y="129" w="-1" h="-1" measuredW="161" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>nextfeed</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::SubTitle" x="511" y="172" w="-1" h="-1" measuredW="283" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>a%20minimalistic%20RSS%20reader</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Canvas" x="801" y="208" w="213" h="492" measuredW="100" measuredH="70" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::SubTitle" x="313" y="234" w="-1" h="-1" measuredW="198" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>What%20is%20nextfeed%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextArea" x="313" y="268" w="446" h="89" measuredW="200" measuredH="140" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>10066329</borderColor>
+        <color>10066329</color>
+        <text>Donec%20non%20molestie%20augue.%20Pellentesque%20at%20ultrices%20magna.%20Nulla%20ac%20scelerisque%20sapien.%20Maecenas%20faucibus%20commodo%20porttitor.%20Cras%20ut%20nunc%20neque.%20Phasellus%20quis%20bibendum%20augue.%20Cras%20varius%20elit%20quis%20dictum%20accumsan.%20Quisque%20sit%20amet%20dui%20vestibulum%2C%20aliquam%20enim%20ut%2C%20tempor%20urna.%20Praesent%20mi%20tellus%2C%20egestas%20eu%20eros%20eget%2C%20pellentesque%20consectetur%20enim.%20Aliquam%20erat%20volutpat.%20Aliquam%20vestibulum%2C%20urna%20sit%20amet%20porttitor%20euismod%2C%20enim%20turpis%20interdum%20augue%2C%20et%20dictum%20ante%20ligula%20id%20lorem.%20Nam%20elementum%20gravida%20cursus.%20Nullam%20a%20tortor%20eget%20leo%20tincidunt%20posuere%20nec%20eget%20leo.%20Proin%20vitae%20egestas%20ipsum.%20Nullam%20cursus%20nunc%20non%20tortor%20semper%20accumsan.</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Image" x="375" y="372" w="322" h="79" measuredW="77" measuredH="79" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>image%20of%20the%20%22Next%22%20button</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::TextArea" x="313" y="466" w="446" h="89" measuredW="200" measuredH="140" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>10066329</borderColor>
+        <color>10066329</color>
+        <text>Suspendisse%20et%20massa%20tortor.%20Sed%20enim%20leo%2C%20feugiat%20vitae%20vehicula%20quis%2C%20pharetra%20vel%20velit.%20In%20hac%20habitasse%20platea%20dictumst.%20Donec%20laoreet%20magna%20est%2C%20quis%20pellentesque%20tortor%20semper%20vitae.%20Nunc%20eu%20adipiscing%20ante%2C%20sit%20amet%20blandit%20dolor.%20Phasellus%20a%20rutrum%20nulla.%20Nunc%20vitae%20volutpat%20nisl.%20Duis%20sodales%2C%20metus%20eu%20porttitor%20hendrerit%2C%20justo%20orci%20bibendum%20ipsum%2C%20quis%20condimentum%20odio%20nibh%20sed%20purus.%20Pellentesque%20velit%20quam%2C%20dignissim%20non%20tempus%20nec%2C%20accumsan%20sit%20amet%20lectus</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::MultilineButton" x="467" y="570" w="-1" h="-1" measuredW="139" measuredH="66" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13576743</color>
+        <text>Create%20a%20Feed%0Ait%27s%20completely%20free</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="872" y="247" w="-1" h="-1" measuredW="70" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Got%20a%20feed%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="875" y="281" w="-1" h="-1" measuredW="70" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>manage</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
