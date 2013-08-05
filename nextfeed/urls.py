@@ -2,11 +2,15 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from profiles.views import NextView, UserProfileView, LoginView, HomeView
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'nextfeed.views.home', name='home'),
+    url(r'^$', HomeView.as_view()),
+    url(r'^login/?', LoginView.as_view())
+    url(r'^$/(?P<user>\w+)/next/?', NextView.as_view()),
+    url(r'^$/(?P<user>\w+)/?', UserProfileView.as_view()),
     # url(r'^nextfeed/', include('nextfeed.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
