@@ -16,11 +16,6 @@ class NextView(RedirectView):
         # Here be dragons.
         return HttpResponseRedirect('/')
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(NextView, self).get_context_data(*args, **kwargs)
-        context['user'] = self.kwargs['user']
-        return context
-
 
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
