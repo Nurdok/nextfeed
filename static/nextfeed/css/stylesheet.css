@@ -31,6 +31,11 @@ body {
 	text-align: left;
 }
 
+.demo-headline-small a {
+	text-decoration: none;
+	color: #34495e;
+}
+
 .content {
 	background-color: #c7c7c7;
 	overflow: hidden;
