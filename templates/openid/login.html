@@ -1,11 +1,6 @@
-
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>nextfeed | login</title>
-	<!-- Simple OpenID Selector -->
+{% extends 'base-content.html' %}
+{% block title %}login{% endblock %}
+{% block head-appendix %}
 	<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}openid-selector/css/openid.css" />
 	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/jquery-1.2.6.min.js"></script>
 	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/openid-jquery.js"></script>
@@ -13,19 +8,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			openid.init('openid_identifier');
-			openid.setDemoMode(true); //Stops form submission for client javascript-only test purposes
 		});
 	</script>
-	<!-- /Simple OpenID Selector -->
-	<style type="text/css">
-		/* Basic page formatting */
-		body {
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		}
-	</style>
-</head>
+{% endblock %}
 
-<body>
+{% block content %}
 <h1>Sign in with your OpenID</h1>
 {% if form.errors %}
 <p class="errors">Please correct errors below:<br />
@@ -55,5 +42,4 @@
  {% endif %}
     </fieldset>
 </form>
-</body>
-</html>
+{% endblock %}
