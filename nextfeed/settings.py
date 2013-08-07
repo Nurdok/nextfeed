@@ -11,7 +11,8 @@ MANAGERS = ADMINS
 
 DATABASES = {}
 
-LOGIN_VIEW = '/login'
+LOGIN_URL = '/openid/login'
+LOGIN_REDIRECT_URL = '/dashboard'
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -114,9 +115,21 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_openid_auth',
     'feeds',
     'profiles'
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+OPENID_CREATE_USERS = True
+
+# For Profiles
+AUTH_PROFILE_MODULE = 'profiles.UserProfile'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

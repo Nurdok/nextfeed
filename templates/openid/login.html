@@ -1,0 +1,59 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>nextfeed | login</title>
+	<!-- Simple OpenID Selector -->
+	<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}openid-selector/css/openid.css" />
+	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/openid-jquery.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/openid-en.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			openid.init('openid_identifier');
+			openid.setDemoMode(true); //Stops form submission for client javascript-only test purposes
+		});
+	</script>
+	<!-- /Simple OpenID Selector -->
+	<style type="text/css">
+		/* Basic page formatting */
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+	</style>
+</head>
+
+<body>
+<h1>Sign in with your OpenID</h1>
+{% if form.errors %}
+<p class="errors">Please correct errors below:<br />
+    {% if form.openid_identifier.errors %}
+    <span class="error">{{ form.openid_identifier.errors|join:", " }}</span>
+    {% endif %}
+    {% if form.next.errors %}
+    <span class="error">{{ form.next.errors|join:", " }}</span>
+    {% endif %}
+</p>
+{% endif %}
+<form id="openid_form" name="fopenid" action="{{ action }}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Sign In Using Your OpenID</legend>
+        <div id="openid_choice">
+            <p>Please click your account provider:</p>
+            <div id="openid_btns"></div>
+        </div>
+        <div id="openid_input_area">
+            <label for="id_openid_identifier">OpenID:</label><br />
+            {{ form.openid_identifier }}
+            <input id="openid_submit" name="bsignin" type="submit" value="Sign in"/>
+        </div>
+ {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" />
+ {% endif %}
+    </fieldset>
+</form>
+</body>
+</html>

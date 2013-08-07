@@ -9,6 +9,7 @@ class UserProfile(models.Model):
     feeds = models.ManyToManyField(to=Feed)
     entries = models.ManyToManyField(to=Entry,
                                      through='profiles.UserEntryDetail')
+    next_slug = models.SlugField(max_length=20)
 
 
 class UserEntryDetail(models.Model):

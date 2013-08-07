@@ -1,24 +1,34 @@
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.detail import DetailView
-from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponseRedirect
+from profiles.models import UserProfile
+from django.contrib.auth.models import User
 
 
 class HomeView(TemplateView):
     template_name = 'home.html'
 
 
-@login_required
 class NextView(RedirectView):
     permanent = False
 
     def get_redirect_url(self, *args, **kwargs):
         # Here be dragons.
-        pass
+        return HttpResponseRedirect('/')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(NextView, self).get_context_data(*args, **kwargs)
+        context['user'] = self.kwargs['user']
+        return context
 
 
-@login_required
-class UserProfileView(DetailView):
-    template_name = 'user_profile.html'
+class DashboardView(TemplateView):
+    template_name = 'dashboard.html'
 
-
-class LoginView():
+    def get_context_data(self, *args, **kwargs):
+        user = self.request.user
+        try:
+            user.get_profile()
+        except:
+            UserProfile(user=user).save()
+        return super(DashboardView, self).get_context_data(*args, **kwargs)
