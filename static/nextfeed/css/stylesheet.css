@@ -1,0 +1,40 @@
+body {
+	background-image: url("../images/escheresque.png");
+	margin: 0px;
+}
+
+.demo-logo {
+	margin: 0px;
+}
+
+.demo-logo small {
+	line-height: 20px;
+}
+
+.demo-headline {
+	border-bottom: black solid 1px;
+}
+
+.content {
+	background-color: #c7c7c7;
+	overflow: hidden;
+	padding: 2em 2em 2em 2em;
+}
+
+.content-left {
+	float: left;
+	width: 45%;
+}
+
+.content-right {
+	float: right;
+	width: 45%;
+}
+
+.content h2 {
+	text-align: left;
+}
+
+.content p {
+	text-align: left;
+}
