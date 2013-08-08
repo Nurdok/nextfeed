@@ -56,6 +56,21 @@
   // Button sizes
   // --------------------------------------------------
 
+  // Huge
+  &.btn-huge {
+    font-size: @base-font-size * 1.571; /* 22px */
+    line-height: 22px;
+    padding: 15px 20px 16px;
+
+    > [class^="fui-"] {
+      top: 1px;
+
+      &.pull-right {
+        margin-right: -2px;
+      }
+    }
+  }
+
   // Large
   &.btn-large {
     font-size: @base-font-size * 1.214; /* 17px */
@@ -69,6 +84,47 @@
         margin-right: -2px;
       }
     }
+  }
+
+  // Small
+  &.btn-small {
+    font-size: @base-font-size * 0.928; /* 13px */
+    line-height: 20px;
+    padding: 6px 13px 8px;
+
+    > [class^="fui-"] {
+      top: 1px;
+    }
+  }
+
+  // Mini
+  &.btn-mini {
+    font-size: @base-font-size * 0.857; /* 12px */
+    padding: 8px 13px 9px;
+    line-height: 1.2;
+
+    > [class^="fui-"] {
+      top: 0;
+    }
+  }
+
+  // Alternate buttons
+  // --------------------------------------------------
+
+  // Embossed
+  &.btn-embossed {
+    .box-shadow(inset 0 -2px 0 fade(black, 15%));
+    &.active,
+    &:active {
+      .box-shadow(inset 0 2px 0 fade(black, 15%));
+    }
+  }
+
+  // Wide
+  &.btn-wide {
+    min-width: 140px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   // Set the backgrounds
@@ -178,5 +234,38 @@
         margin-right: 0;
       }
     }
+  }
+}
+
+// SOCIAL BUTTONS
+// ----------------------
+
+// Set the backgrounds
+// -------------------------
+.btn-social-pinterest {
+  .swap-social-button(@social-pinterest);
+}
+.btn-social-linkedin {
+  .swap-social-button(@social-linkedin)
+}
+.btn-social-stumbleupon {
+  .swap-social-button(@social-stumbleupon);
+}
+.btn-social-googleplus {
+  .swap-social-button(@social-googleplus);
+}
+.btn-social-facebook {
+  .swap-social-button(@social-facebook);
+}
+.btn-social-twitter {
+  .swap-social-button(@social-twitter);
+}
+
+//
+// Responsive: Landscape phone
+// --------------------------------------------------
+@media (max-width: 480px) {
+  .btn.btn-block {
+    margin: 9px 0 18px;
   }
 }

@@ -4,7 +4,7 @@
 
 .tagsinput {
   background: white;
-  border: 2px solid @firm;
+  border: 2px solid mix(@inverse, @base, 90%);
   border-radius: 6px;
   height: 100px;
   margin-bottom: 18px;
@@ -14,8 +14,8 @@
 
   .tag {
     border-radius: 4px;
-    background-color: @firm;
-    color: @inverse;
+    background-color: mix(@inverse, @base, 90%);
+    color: mix(@base, @inverse, 65%);
     cursor: pointer;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -113,5 +113,16 @@
 .not_valid {
   background: #fbd8db !important;
   color: #90111a !important;
+}
+
+// Alternate Color
+// --------------------------------------------------
+.tagsinput-primary {
+  border-color: @firm;
+
+  .tag {
+    background-color: @firm;
+    color: @inverse;
+  }
 }
 

@@ -1,8 +1,23 @@
 {% extends 'base-content.html' %}
 {% block title %}dashboard{% endblock %}
 {% block content %}
-	<h1>{{ user.first_name }}'s dashboard</h1>
-	<p>
-	Your personalized URL is: http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}
-	</p>
+	<div style="width:100%;">
+		<h4>Your personalized URL</h4>
+		<input id="next-slug" type="text" disabled width="100%" class="login-field" value="http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}"></input>
+	    <div class="span3">
+	      <a href="#" class="btn btn-large btn-block btn-inverse" id="copy-btn">Copy to Clipboard</a>
+	    </div>		     	
+	</div>
+	<br/>
+	<br/>
+	<hr/>
+	<br/>
+	<div style="width:100%;">
+		<h4>Your Feeds</h4>
+		<table class="table table-striped">
+		<tr><th>Feed</th><th>Address</th></tr>
+		<tr><td>Coding Horror</td><td>dfsdf</td></tr>
+		<tr><td>Joel on Software</td><td>fsdf</td></tr>
+		</table>
+	</div>
 {% endblock %}

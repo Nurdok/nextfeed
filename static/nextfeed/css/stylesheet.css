@@ -3,35 +3,63 @@ body {
 	margin: 0px;
 }
 
-.demo-logo {
+.headline {
+  padding: 73px 0 110px;
+  text-align: center;
+}
+.logo-big {
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 100px;
+}
+.logo-big .logo {
+  background: url(../images/demo/logo-mask.png) center 0 no-repeat;
+  background-size: 256px 186px;
+  height: 186px;
+  margin: 0 auto 26px;
+  overflow: hidden;
+  text-indent: -9999em;
+  width: 256px;
+}
+.logo-big small {
+  color: rgba(52, 73, 94, 0.30000000000000004);
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  padding-top: 5px;
+}
+
+.logo-big {
 	margin: 0px;
 }
 
-.demo-logo-small {
+.logo-small {
 	margin: 0px;
 }
 
-.demo-logo small {
+.logo-big small {
 	line-height: 20px;
 }
 
-.demo-logo-small small {
+.logo-small small {
 	margin: 0em 0em 0em 0.5em;
 	font-weight: normal;
 }
 
-.demo-headline {
+.headline {
 	border-bottom: black solid 1px;
 	padding: 3em 2em 4em 2em;
 }
 
-.demo-headline-small {
+.headline-small {
 	border-bottom: black solid 1px;
 	padding: 1em 2em 2em 2em;
 	text-align: left;
 }
 
-.demo-headline-small a {
+.headline-small a {
 	text-decoration: none;
 	color: #34495e;
 }
@@ -45,11 +73,13 @@ body {
 .content-left {
 	float: left;
 	width: 45%;
+	text-align: center;
 }
 
 .content-right {
 	float: right;
 	width: 45%;
+	text-align: center;
 }
 
 .content h2 {
@@ -58,4 +88,25 @@ body {
 
 .content p {
 	text-align: left;
+}
+
+#next-slug {
+	width: 50%;
+	color: black;
+	text-align: center;
+	height: 3em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+footer {
+	color: #CFCFCF;
+}
+
+footer a {
+	color: white;
+}
+
+h4 {
+	margin-bottom: 0.5;
 }

@@ -21,6 +21,12 @@
           box-sizing: @boxmodel;
 }
 
+.background-clip(@clip: border-box) {
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
+}
+
 .box-shadow(@properties) {
   -webkit-box-shadow: @properties;
      -moz-box-shadow: @properties;
@@ -60,7 +66,7 @@
   }
 }
 
-.mask(...) {
+.mask(@arguments) {
   -webkit-mask: @arguments;
           mask: @arguments;
 }
@@ -158,9 +164,44 @@
   }
 }
 
+.swap-social-button(@color) {
+  background-color: @color;
+
+  &:hover, &:focus {
+    background-color: mix(@color, white, 80%);
+  }
+  &:active, &.active {
+    background-color: mix(@color, black, 85%);
+  }
+}
+
+.swap-dialog-color(@color) {
+  background-color: mix(@color, white, 9%);
+  border-top-color: mix(@color, white, 20%);
+}
+
 .dropdown-arrow-inverse {
   border-bottom-color: @base !important;
   border-top-color: @base !important;
+}
+
+.swap-iconbar-color(@color) {
+  background-color: @color;
+  > ul {
+    > li {
+      &.active {
+        > a {
+          color: mix(@color, black, 66%);
+        }
+      }
+      > a {
+        &:hover, &:focus {
+          color: mix(@color, black, 66%);
+        }
+      }
+    }
+  }
+  .iconbar-unread { background-color: mix(@color, black, 66%); }
 }
 
 .input-states(@color) {
@@ -208,12 +249,7 @@
   }
 }
 
-// Color swatches grid
-.calc-color(@first-color, @second-color) {
-  .palette-@{first-color} {
-    background-color: ~"@{@{first-color}}";
-  }
-  .palette-@{second-color} {
-    background-color: ~"@{@{second-color}}";
-  }  
+.swap-text-color(@color) {
+  color: @color;
+  a&:hover, a&:focus { color: mix(@color, black, 80%); }
 }

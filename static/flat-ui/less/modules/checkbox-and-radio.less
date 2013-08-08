@@ -95,4 +95,36 @@
       }
     }
   }
+
+  // Alternate Color
+  // --------------------------------------------------
+
+  // Primary
+  &.primary {
+    .icons {
+      color: @base;
+    }
+    // Checked State
+    &.checked {
+      color: @link-color;
+
+      .icons {
+        color: @firm;
+      }
+    }
+    // Disabled state
+    &.disabled {
+      cursor: default;
+      color: @lightgray;
+
+      .icons {
+        color: @lightgray;
+      }
+      &.checked {
+        .icons {
+          color: @lightgray;
+        }
+      }
+    }
+  }
 }
