@@ -1,10 +1,10 @@
 {% extends 'base-content.html' %}
 {% block title %}login{% endblock %}
 {% block head-appendix %}
-	<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}openid-selector/css/openid.css" />
-	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/jquery-1.2.6.min.js"></script>
-	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/openid-jquery.js"></script>
-	<script type="text/javascript" src="{{STATIC_URL}}openid-selector/js/openid-en.js"></script>
+	<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}css/openid.css" />
+	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/openid-jquery.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}js/openid-en.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			openid.init('openid_identifier');
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>Sign in with your OpenID</h1>
+<h3>Sign in with your OpenID</h3>
 {% if form.errors %}
 <p class="errors">Please correct errors below:<br />
     {% if form.openid_identifier.errors %}
@@ -26,8 +26,6 @@
 {% endif %}
 <form id="openid_form" name="fopenid" action="{{ action }}" method="post">
     {% csrf_token %}
-    <fieldset>
-        <legend>Sign In Using Your OpenID</legend>
         <div id="openid_choice">
             <p>Please click your account provider:</p>
             <div id="openid_btns"></div>
@@ -40,6 +38,5 @@
  {% if next %}
         <input type="hidden" name="next" value="{{ next }}" />
  {% endif %}
-    </fieldset>
 </form>
 {% endblock %}

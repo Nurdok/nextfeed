@@ -176,9 +176,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '..', 'static'),
-)
+static_dir = os.path.join(BASE_DIR, '..', 'static')
+dirs = ('nextfeed',
+        'flat-ui',
+        'openid-selector',
+        'zero-clipboard')
+
+STATICFILES_DIRS = tuple(os.path.join(static_dir, dir) for dir in dirs)
 
 
 try:
