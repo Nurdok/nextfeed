@@ -10,7 +10,7 @@
 	<div style="width:100%;">
 		<h4>Your personalized URL</h4>
         <div class="control-group info" style="text-align: center; width:100%">
-		<input id="next-slug" type="text" min="50" disabled class="login-field active" value="http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}"></input>
+    		<input id="next-slug" type="text" min="50" disabled class="login-field active" value="http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}"></input>
         </div>
         
         <div align="center" style="width: 20%; min-width: 200px">
@@ -23,66 +23,37 @@
 	<br/>
 	<div style="width:100%;">
 		<h4>Your Feeds</h4>
-      <table class="table table-bordered">
+      <table>
             <thead>
               <tr>
                 <th><label class="checkbox no-label toggle-all" for="checkbox-table-1"><input type="checkbox" value="" id="checkbox-table-1" data-toggle="checkbox"></label></th>
-                <th>Rank</th>
                 <th>Name</th>
-                <th>Genre</th>
-                <th>Votes</th>
-                <th>Year</th>
-                <th>Rating</th>
+                <th>URL</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><label class="checkbox no-label" for="checkbox-table-2"><input type="checkbox" value="" id="checkbox-table-2" data-toggle="checkbox"></label></td>
-                <td>1</td>
-                <td>The Shawshank Redemption</td>
-                <td>Crime, Drama</td>
-                <td>923,629</td>
-                <td>1994</td>
-                <td>9.2</td>
+                <td>Coding Horror</td>
+                <td>http://codinghorror.com/rss</td>
               </tr>
-              <tr class="selected-row">
+              <tr>
                 <td><label class="checkbox no-label" for="checkbox-table-3"><input type="checkbox" checked="checked" value="" id="checkbox-table-3" data-toggle="checkbox"></label></td>
-                <td>2</td>
-                <td>The Godfather</td>
-                <td>Crime, Drama</td>
-                <td>663,133</td>
-                <td>1972</td>
-                <td>9.2</td>
-              </tr>
-              <tr class="selected-row">
-                <td><label class="checkbox no-label" for="checkbox-table-4"><input type="checkbox" checked="checked" value="" id="checkbox-table-4" data-toggle="checkbox"></label></td>
-                <td>3</td>
-                <td>The Godfather: Part II</td>
-                <td>Crime, Drama</td>
-                <td>427,132</td>
-                <td>1974</td>
-                <td>9.0</td>
-              </tr>
-              <tr>
-                <td><label class="checkbox no-label" for="checkbox-table-5"><input type="checkbox" value="" id="checkbox-table-5" data-toggle="checkbox"></label></td>
-                <td>4</td>
-                <td>Pulp Fiction</td>
-                <td>Crime, Drama</td>
-                <td>719,280</td>
-                <td>1994</td>
-                <td>8.9</td>
-              </tr>
-              <tr>
-                <td><label class="checkbox no-label" for="checkbox-table-6"><input type="checkbox" value="" id="checkbox-table-6" data-toggle="checkbox"></label></td>
-                <td>5</td>
-                <td>The Good, the Bad and the Ugly</td>
-                <td>Adventure, Western</td>
-                <td>218,887</td>
-                <td>1966</td>
-                <td>8.9</td>
+                <td>Joel on Software</td>
+                <td>http://joelonsofware.com/feed/xml</td>
               </tr>
             </tbody>
           </table>
+          
+    <div style="width: 100%; margin-top: 2em">
+        <form>
+            <div class="control-group info" style="text-align: center; width:100%;">
+        		<input id="feed-url" type="text" min="50" class="login-field active" placeholder="Paste RSS feed here!"></input>
+            </div>
+    	    <button class="label label-success btn-inverse btn" id="add-feed-button">Add Feed</button>
+        </form>
+    </div>
+        
         
 	</div>
     
