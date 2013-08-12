@@ -32,25 +32,29 @@
               </tr>
             </thead>
             <tbody>
+              {% for feed in user.get_profile.feeds.all %}
               <tr>
                 <td><label class="checkbox no-label" for="checkbox-table-2"><input type="checkbox" value="" id="checkbox-table-2" data-toggle="checkbox"></label></td>
-                <td>Coding Horror</td>
-                <td>http://codinghorror.com/rss</td>
-              </tr>
-              <tr>
-                <td><label class="checkbox no-label" for="checkbox-table-3"><input type="checkbox" checked="checked" value="" id="checkbox-table-3" data-toggle="checkbox"></label></td>
-                <td>Joel on Software</td>
-                <td>http://joelonsofware.com/feed/xml</td>
+                <td>{{ feed.title }}</td>
+                <td>{{ feed.link }}</td>
               </tr>
             </tbody>
+            {% endfor %}
           </table>
           
-    <div style="width: 100%; margin-top: 2em">
+    <div style="width: 100%; margin-top: 2em; vertical-align: middle;">
+    <!--
         <form>
             <div class="control-group info" style="text-align: center; width:100%;">
         		<input id="feed-url" type="text" min="50" class="login-field active" placeholder="Paste RSS feed here!"></input>
             </div>
     	    <button class="label label-success btn-inverse btn" id="add-feed-button">Add Feed</button>
+        </form>
+        -->
+        <form action="#" method="post">{% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.link }}
+    	    <input type="submit" value="Add Feed" class="label label-success btn-inverse btn" id="add-feed-button"/>
         </form>
     </div>
         
