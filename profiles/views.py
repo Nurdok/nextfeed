@@ -14,6 +14,10 @@ class HomeView(TemplateView):
     template_name = 'home.html'
 
 
+class NoEntriesView(TemplateView):
+    template_name = 'noentries.html'
+
+
 class NextView(RedirectView):
     permanent = False
 
