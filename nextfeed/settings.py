@@ -1,4 +1,6 @@
 # Django settings for nextfeed project.
+import djcelery
+djcelery.setup_loader()
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -164,9 +166,6 @@ LOGGING = {
 
 BROKER_URL = 'amqp://fecnwrea:A9Rx3kA6tGwia4f5qCxptN6hSIASQYjy@bunny.cloudamqp.com/fecnwrea'
 BROKER_POOL_LIMIT = 1
-
-import djcelery
-djcelery.setup_loader()
 
 from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
