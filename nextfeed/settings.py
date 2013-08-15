@@ -167,6 +167,9 @@ LOGGING = {
 BROKER_URL = 'amqp://fecnwrea:A9Rx3kA6tGwia4f5qCxptN6hSIASQYjy@bunny.cloudamqp.com/fecnwrea'
 BROKER_POOL_LIMIT = 1
 
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ("feeds.tasks",)
+
 from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
     'add-every-30-seconds': {
