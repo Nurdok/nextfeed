@@ -10,7 +10,7 @@ class Feed(models.Model):
 
 
 class Entry(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=200)
     link = models.CharField(max_length=1000)
     feed = models.ForeignKey(to=Feed)
     published = models.DateTimeField()
