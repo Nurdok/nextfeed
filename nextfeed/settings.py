@@ -117,7 +117,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django_openid_auth',
     'feeds',
-    'profiles'
+    'profiles',
+    'kombu.transport.django',
+    'djcelery',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -160,6 +162,23 @@ LOGGING = {
     }
 }
 
+BROKER_URL = 'amqp://fecnwrea:A9Rx3kA6tGwia4f5qCxptN6hSIASQYjy@bunny.cloudamqp.com/fecnwrea'
+BROKER_POOL_LIMIT = 1
+
+import djcelery
+djcelery.setup_loader()
+
+from datetime import timedelta
+CELERYBEAT_SCHEDULE = {
+    'add-every-30-seconds': {
+        'task': 'feeds.tasks.poll_all_feeds',
+        'schedule': timedelta(minutes=30),
+        'args': ()
+    },
+}
+
+CELERY_TIMEZONE = 'UTC'
+
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
@@ -183,6 +202,8 @@ dirs = ('nextfeed',
         'zero-clipboard')
 
 STATICFILES_DIRS = tuple(os.path.join(static_dir, dir) for dir in dirs)
+
+
 
 
 try:
