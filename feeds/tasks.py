@@ -26,7 +26,7 @@ def poll_feed(feed):
                           published=published)
         entry_obj.save()
 
-        subscribers = UserProfile.objects.filter(feeds__in=feed)
+        subscribers = UserProfile.objects.filter(feeds=feed)
         for profile in subscribers:
             UserEntryDetail(entry=entry_obj,
                             profile=profile,
