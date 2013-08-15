@@ -28,7 +28,7 @@ class NextView(RedirectView):
         entries = profile.entries.filter(userentrydetail__read=False)
         if not entries.exists():
             return '/noentries'
-        entry = entries.order_by('-published')[0]
+        entry = entries.order_by('published')[0]
         user_entry = entry.userentrydetail_set.get(profile=profile)
         user_entry.read = True
         user_entry.save()
