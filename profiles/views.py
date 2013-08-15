@@ -1,13 +1,14 @@
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect
-from profiles.models import UserProfile
+from profiles.models import UserProfile, UserEntryDetail
 from django.contrib.auth.models import User
 from feeds.forms import FeedForm
 import feedparser
-from feeds.models import Feed
+from feeds.models import Feed, Entry
 from django.views.generic.edit import FormView
 from django.core.exceptions import ObjectDoesNotExist
+import time
 
 
 class HomeView(TemplateView):
@@ -40,9 +41,12 @@ class DashboardView(FormView):
     success_url = '/dashboard'
 
     def form_valid(self, form):
+
+        # Add feed
         user = self.request.user
         link = form.cleaned_data['link']
-        feed = feedparser.parse(link).feed
+        parser = feedparser.parse(link)
+        feed = parser.feed
         title = feed.title
         try:
             feed_obj = Feed.objects.get(link=link)
@@ -50,6 +54,20 @@ class DashboardView(FormView):
             feed_obj = Feed(link=link, title=title)
             feed_obj.save()
         user.get_profile().feeds.add(feed_obj)
+
+        # Add entries from feed
+        entries = parser.entries
+        for entry in entries:
+            published = time.strftime('%Y-%m-%d %H:%M', entry.published_parsed)
+            entry_obj = Entry(feed=feed_obj,
+                              title=entry.title,
+                              link=entry.link,
+                              published=published)
+            entry_obj.save()
+            UserEntryDetail(entry=entry_obj,
+                            profile=user.get_profile(),
+                            read=False).save()
+
         return super(DashboardView, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
