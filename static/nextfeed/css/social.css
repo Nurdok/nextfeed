@@ -1,0 +1,28 @@
+.bs-social {
+  margin-bottom: 20px;
+}
+
+.bs-social-buttons {
+  display: inline-block;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.bs-social-buttons li {
+  display: inline-block;
+  line-height: 1;
+}
+
+.bs-social-buttons li + li {
+  margin-left: 15px;
+}
+
+.bs-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+
+.bs-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
+

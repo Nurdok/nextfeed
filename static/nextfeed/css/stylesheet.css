@@ -1,18 +1,69 @@
+footer {
+	background-color: #34495E;
+    width: auto;
+    text-align: center;
+	color: #CFCFCF;
+}
+
+footer a {
+	color: white;
+}
+
+.container {
+    height: 100%;
+    padding: 0px;
+}
+
+
+#main {
+    height: 100%;
+}
+
+#wrap {
+	background-color: #C7C7C7;
+    border: 1px black solid;
+    border-bottom: 0px;
+    border-top: 0px;
+    
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+}
+
+.content {
+	padding: 2em 2em 2em 2em;
+}
+
+#wrap, footer {
+    width: auto;
+	min-width: 500px;
+	max-width: 1000px;
+}
+
 body { 
 	background-image: url("../images/escheresque.png");
 	margin: 0px;
+    padding: 0px;
 }
 
 .headline {
   padding: 73px 0 110px;
   text-align: center;
+  border-bottom: black solid 1px;
+  padding: 3em 2em 4em 2em;
 }
+
+.headline, .headline-small {
+  background: white;
+}
+
 .logo-big {
   font-size: 90px;
   font-weight: 900;
   letter-spacing: -2px;
   line-height: 100px;
 }
+
 .logo-big .logo {
   background: url(../images/demo/logo-mask.png) center 0 no-repeat;
   background-size: 256px 186px;
@@ -22,6 +73,7 @@ body {
   text-indent: -9999em;
   width: 256px;
 }
+
 .logo-big small {
   color: rgba(52, 73, 94, 0.30000000000000004);
   display: block;
@@ -48,11 +100,6 @@ body {
 	font-weight: normal;
 }
 
-.headline {
-	border-bottom: black solid 1px;
-	padding: 3em 2em 4em 2em;
-}
-
 .headline-small {
 	border-bottom: black solid 1px;
 	padding: 1em 2em 2em 2em;
@@ -64,10 +111,9 @@ body {
 	color: #34495e;
 }
 
-.content {
-	background-color: #c7c7c7;
-	overflow: hidden;
-	padding: 2em 2em 2em 2em;
+#github-ribbon {
+	position:relative;
+	min-width:500px;
 }
 
 .content-left {
@@ -90,54 +136,17 @@ body {
 	text-align: left;
 }
 
+h4 {
+	margin-bottom: 0.5em;
+}
+
 #next-slug {
 	max-width: 75%;
     width: 100%;
 	color: black;
 	text-align: center;
-	height: 3em;
 	margin-top: 1em;
 	margin-bottom: 2em;
-}
-
-footer {
-	color: #CFCFCF;
-}
-
-footer a {
-	color: white;
-}
-
-h4 {
-	margin-bottom: 0.5em;
-}
-
-.bottom-menu {
-	padding: 1em;
-}
-
-/* Social proof buttons from GitHub & Twitter */
-.bs-social {
-  margin-bottom: 20px;
-}
-.bs-social-buttons {
-  display: inline-block;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style: none;
-}
-.bs-social-buttons li {
-  display: inline-block;
-  line-height: 1;
-}
-.bs-social-buttons li + li {
-  margin-left: 15px;
-}
-.bs-social-buttons .twitter-follow-button {
-  width: 225px !important;
-}
-.bs-social-buttons .twitter-share-button {
-  width: 98px !important;
 }
 
 #copy-button.zeroclipboard-is-hover {
@@ -156,4 +165,29 @@ h4 {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; 
+}
+
+#feed-url-input {
+	padding: 0px;
+	margin: 0px;
+    height: 1.5em;
+}
+
+#url-form-container {
+	padding: 2em 0em 1em 0em;
+}
+
+#feeds {
+	background-color: rgb(213, 213, 213);
+}
+
+#feeds td {
+	padding: 0.5em 0.5em 0.5em 0.5em;
+    vertical-align: middle;
+    text-align: left;
+}
+
+#center-td {
+    vertical-align: middle;
+    text-align: center !important;
 }

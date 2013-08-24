@@ -1,34 +1,47 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <title>nextfeed | {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Loading Bootstrap -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
     <link href="{{ STATIC_URL }}css/flat-ui.css" rel="stylesheet">
+    
+    <link href="{{ STATIC_URL }}css/stickyfooter.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/social.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/stylesheet.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
+    
+    <!--[if !IE 7]>
+        <style type="text/css">
+            #wrap {display:table;height:100%}
+        </style>
+    <![endif]-->
+    
     {% block head-appendix %}{% endblock %}
-</head>
-<body>
-
-<div style="position:relative;min-width:500px">
-    <a href="https://github.com/Nurdok/nextfeed"><img style="position: absolute;right:0;top:0; z-index: 999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-</div>
-
-<div style="width: 100%; height: 100%; position: relative;" align="center">
-    <div style="width: auto; height: 100%; max-width: 1000px; min-width:500px">
-        <div style="background-color: #f1f1f1; border: 1px black solid; border-top: 0px;" align="center">
-            <!-- Header -->
+  </head>
+  <body>
+  
+    <!-- Fork Me on Github ribbon -->
+    <div id="github-ribbon">
+        <a href="https://github.com/Nurdok/nextfeed"><img style="position: absolute;right:0;top:0; z-index: 999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </div>
+    
+    <div class="container" align="center">
+    <!-- Content + Header -->
+    <div id="wrap">
+        <div id="main">
             {% block header %}
             <div class="headline">
                 <h1 class="logo-big">
@@ -37,51 +50,42 @@
                 </h1>
             </div> <!-- /demo-headline -->
             {% endblock %}
-        
-     	<div class="content">
-     		{% block content %}
-	     	{% endblock %}
-     	</div>
-     	</div>
             
-                    <footer style="background-color: #34495E;">
-        <div style="overflow: auto; width: 100%">
-            <div style="width: auto; max-width: 650px; overflow: auto; padding: 0 1em 0 1em;">
-            
-            	{% block footer %}
-                    <br/>
-                    <em>nextfeed</em> was created by <a href="http://blog.amir.rachum.com">Amir Rachum</a> and <a href="https://github.com/yanivlib">Yaniv Libal</a>.<br/>
-                    Maybe someday Yonatan Nakar as well.<br/>
-                    
-                      <div class="bs-social">
-                          <ul class="bs-social-buttons">
-                            <li>
-                              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                            </li>
-                            <li>
-                              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
-                            </li>
-                            <li class="follow-btn">
-                              <a href="https://twitter.com/AmirRachum" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @AmirRachum</a>
-                            </li>
-                            <li class="tweet-btn">
-                              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nextfeed.org" data-count="horizontal" data-via="AmirRachum" data-related="mdo:Creator of nextfeed">Tweet</a>
-                            </li>
-                          </ul>
-                      </div>
-                {% endblock %}
-                </div>
+            <div class="content">
+                {% block content %}{% endblock %}
             </div>
-        </footer>
-        
+        </div>
     </div>
-</div>
+    
+    <!-- Footer -->
+    <footer>
+    	{% block footer %}
+            <br/>
+            <em>nextfeed</em> was created by <a href="http://blog.amir.rachum.com">Amir Rachum</a> and <a href="https://github.com/yanivlib">Yaniv Libal</a>.<br/>
+            Maybe someday Yonatan Nakar as well.<br/><br/>
+                        
+              <div class="bs-social">
+                  <ul class="bs-social-buttons">
+                    <li>
+                      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                    </li>
+                    <li>
+                      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+                    </li>
+                    <li class="follow-btn">
+                      <a href="https://twitter.com/AmirRachum" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @AmirRachum</a>
+                    </li>
+                    <li class="tweet-btn">
+                      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nextfeed.org" data-count="horizontal" data-via="AmirRachum" data-related="mdo:Creator of nextfeed">Tweet</a>
+                    </li>
+                  </ul>
+              </div>
+        {% endblock %}
+    </footer>
+    
+    </div>
 
-<!-- Footer -->
-<div>
-</div>
-
-<!-- Load JS here for greater good =============================-->
+    <!-- Load JS here for greater good =============================-->
     <script src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.ui.touch-punch.min.js"></script>
@@ -94,6 +98,5 @@
     <script src="{{ STATIC_URL }}js/jquery.placeholder.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.stacktable.js"></script>
     <script src="http://platform.twitter.com/widgets.js"></script>
-    
-</body>
+  </body>
 </html>
