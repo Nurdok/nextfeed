@@ -20,11 +20,12 @@ def poll_feed(feed):
             continue
 
         published = time.strftime('%Y-%m-%d %H:%M', entry.published_parsed)
-        entry_obj = Entry(feed=feed,
-                          title=entry.title,
-                          link=entry.link,
-                          published=published)
-        entry_obj.save()
+        entry_obj, created = Entry.objects.get_or_create(feed=feed,
+                                                         title=entry.title,
+                                                         link=entry.link,
+                                                         published=published)
+        if not created:
+            continue
 
         subscribers = UserProfile.objects.filter(feeds=feed)
         for profile in subscribers:
