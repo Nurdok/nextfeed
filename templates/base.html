@@ -1,102 +1,131 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>nextfeed | {% block title %}{% endblock %}</title>
+    <title>nextfeed | {% block title %}home{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Loading Bootstrap -->
+    <!-- CSS -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      #wrap > .container {
+        padding-top: 60px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+
+      code {
+        font-size: 80%;
+      }
+
+    </style>
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- Loading Flat UI -->
-    <link href="{{ STATIC_URL }}css/flat-ui.css" rel="stylesheet">
-    
-    <link href="{{ STATIC_URL }}css/stickyfooter.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/social.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/stylesheet.css" rel="stylesheet">
-
-    <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
+      <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
     <![endif]-->
-    
-    <!--[if !IE 7]>
-        <style type="text/css">
-            #wrap {display:table;height:100%}
-        </style>
-    <![endif]-->
-    
-    {% block head-appendix %}{% endblock %}
+
+  {% block head-appendix %}{% endblock %}
   </head>
+
   <body>
-  
-    <!-- Fork Me on Github ribbon -->
-    <div id="github-ribbon">
-        <a href="https://github.com/Nurdok/nextfeed"><img style="position: absolute;right:0;top:0; z-index: 999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-    </div>
-    
-    <div class="container" align="center">
-    <!-- Content + Header -->
+
+
+    <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
-        <div id="main">
-            {% block header %}
-            <div class="headline">
-                <h1 class="logo-big">
-                    » nextfeed
-                    <small>a minimalistic rss reader</small>
-                </h1>
-            </div> <!-- /demo-headline -->
-            {% endblock %}
-            
-            <div class="content">
-                {% block content %}{% endblock %}
-            </div>
+
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">nextfeed</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/about">About</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
-    </div>
-    
-    <!-- Footer -->
-    <footer>
-    	{% block footer %}
-            <br/>
-            <em>nextfeed</em> was created by <a href="http://blog.amir.rachum.com">Amir Rachum</a> and <a href="https://github.com/yanivlib">Yaniv Libal</a>.<br/>
-            Maybe someday Yonatan Nakar as well.<br/><br/>
-                        
-              <div class="bs-social">
-                  <ul class="bs-social-buttons">
-                    <li>
-                      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                    </li>
-                    <li>
-                      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nurdok&repo=nextfeed&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
-                    </li>
-                    <li class="follow-btn">
-                      <a href="https://twitter.com/AmirRachum" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @AmirRachum</a>
-                    </li>
-                    <li class="tweet-btn">
-                      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nextfeed.org" data-count="horizontal" data-via="AmirRachum" data-related="mdo:Creator of nextfeed">Tweet</a>
-                    </li>
-                  </ul>
-              </div>
+      </div>
+
+      <!-- Begin page content -->
+      <div class="container">
+        {% block content %}
         {% endblock %}
-    </footer>
-    
+      </div>
+
+      <div id="push"></div>
     </div>
 
-    <!-- Load JS here for greater good =============================-->
-    <script src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.ui.touch-punch.min.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-select.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-switch.js"></script>
-    <script src="{{ STATIC_URL }}js/flatui-checkbox.js"></script>
-    <script src="{{ STATIC_URL }}js/flatui-radio.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.tagsinput.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.placeholder.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.stacktable.js"></script>
-    <script src="http://platform.twitter.com/widgets.js"></script>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Created by <a href="http://blog.amir.rachum.com">Amir Rachum</a> and <a href="#">Yaniv Libal</a>.</p>
+      </div>
+    </div>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+
   </body>
 </html>

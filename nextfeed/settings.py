@@ -199,7 +199,8 @@ STATIC_URL = '/static/'
 
 static_dir = os.path.join(BASE_DIR, '..', 'static')
 dirs = ('nextfeed',
-        'flat-ui',
+        'bootstrap',
+        'jquery',
         'openid-selector',
         'zero-clipboard')
 

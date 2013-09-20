@@ -1,4 +1,4 @@
-{% extends 'base-content.html' %}
+{% extends 'base.html' %}
 
 {% block title %}dashboard{% endblock %}
 
@@ -8,9 +8,9 @@
 
 {% block content %}
 	<div style="width:100%;">
-		<h4>Your personalized URL</h4>
-        <div class="control-group info" style="text-align: center; width:100%">
-    		<input id="next-slug" type="text" min="50" disabled class="login-field active" value="http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}"></input>
+		<h4>Your Personalized URL</h4>
+        <div class="control-group info" style="text-align: left; width:100%">
+    		<input id="next-slug" style="width: 75%; height: 2em; text-align: center" type="text" min="50" disabled class="login-field active" value="http://nextfeed.org/next?subscription={{ user.get_profile.next_slug }}"></input>
         </div>
         
         <div align="center" style="width: 20%; min-width: 200px">
@@ -23,32 +23,6 @@
 	<br/>
 	<div style="width:100%;">
 		<h4>Your Feeds</h4>
-      <table id="feeds">
-            <thead>
-              <tr>
-                <!-- <th align="left"><label class="checkbox no-label toggle-all" for="checkbox-table-0"><input type="checkbox" value="" id="checkbox-table-0" data-toggle="checkbox"></label></th> -->
-                <th></th>
-                <th>Name</th>
-                <th>URL</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for feed in user.get_profile.feeds.all %}
-              <tr>
-                <td class="center-td"><label class="checkbox no-label" for="checkbox-table-{{ forloop.counter }}"><input type="checkbox" value="" id="checkbox-table-{{ forloop.counter }}" data-toggle="checkbox"></label></td>
-                <td>{{ feed.title }}</td>
-                <td>{{ feed.link }}</td>
-              </tr>
-            </tbody>
-            {% endfor %}
-          </table>
-            
-            
-    <br/>
-    <div align="center" style="width: 20%; min-width: 200px">
-	    <button class="label label-success btn-inverse btn">Remove Selected</button>
-    </div>
-          
     <div id="url-form-container" style="width: 100%; vertical-align: middle; text-align: center">
     <!--
         <form>
@@ -60,11 +34,43 @@
         -->
         <form action="#" method="post">{% csrf_token %}
             {{ form.non_field_errors }}
-            {{ form.link }}
-    	    <input type="submit" value="Add Feed" class="label label-success btn-inverse btn" id="add-feed-button"/>
+            <div class="input-append">
+              {{ form.link }}
+              <input type="submit" class="btn" type="button" value="Add Feed" />
+            </div>
         </form>
     </div>
     
+      <table id="feeds" class="table table-condensed table-hover">
+            <thead>
+              <tr>
+                <!-- <th align="left"><label class="checkbox no-label toggle-all" for="checkbox-table-0"><input type="checkbox" value="" id="checkbox-table-0" data-toggle="checkbox"></label></th> -->
+                <th></th>
+                <th>Name</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for feed in user.get_profile.feeds.all %}
+              <tr>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Mark All Unread</a></li>
+                          <li><a href="#">Mark All Read</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>{{ feed.title }}</td>
+                <td>{{ feed.link }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+            
 	</div>
     
     <script type="text/javascript">
