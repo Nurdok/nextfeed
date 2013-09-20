@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     next_slug = RandomSlugField(slug_length=10)
 
     def __unicode__(self):
-        return "{}'s profile".format(self.user.username)
+        return u"{}'s profile".format(self.user.username)
 
 
 class UserEntryDetail(models.Model):
@@ -22,7 +22,7 @@ class UserEntryDetail(models.Model):
     read = models.BooleanField()
 
     def __unicode__(self):
-        return 'User: {}, Entry: {}, Read: {}'.format(
+        return u'User: {}, Entry: {}, Read: {}'.format(
                                                 self.profile.user.username,
                                                 self.entry,
                                                 self.read)

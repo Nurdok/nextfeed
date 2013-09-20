@@ -16,4 +16,4 @@ class Entry(models.Model):
     published = models.DateTimeField()
 
     def __unicode__(self):
-        return '{}: {}'.format(self.feed, self.title)
+        return u'{}: {}'.format(self.feed, self.title)
