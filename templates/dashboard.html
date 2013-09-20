@@ -48,7 +48,7 @@
 	<hr/>
 	<br/>
 	<div style="width:100%;">
-		<h4>Your Feeds</h4>
+		<h4>Your Feeds &nbsp;&nbsp;&nbsp;<img id="loading-icon" style="visibility: hidden;" src="{{ STATIC_URL }}images/loading-icon.gif"/></h4>
     <div id="url-form-container" style="width: 100%; vertical-align: middle; text-align: center">
     <!--
         <form>
@@ -62,7 +62,7 @@
             {{ form.non_field_errors }}
             <div class="input-append">
               {{ form.link }}
-              <input type="submit" class="btn" type="button" value="Add Feed" />
+              <input type="submit" id="add-feed-btn" class="btn" type="button" value="Add Feed" />
             </div>
         </form>
     </div>
@@ -96,5 +96,11 @@
     var clip = new ZeroClipboard(document.getElementById("copy-button"), {
           moviePath: "{{ STATIC_URL }}swf/ZeroClipboard.swf"
         } );
+    </script>
+    
+    <script type="text/javascript">
+    $("#add-feed-btn").click(function() {
+        $("#loading-icon").css("visibility", "visible")
+    })
     </script>
 {% endblock %}    
