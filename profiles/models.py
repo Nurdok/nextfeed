@@ -22,7 +22,7 @@ class UserEntryDetail(models.Model):
     read = models.BooleanField()
 
     def __unicode__(self):
-        return 'User: {}, Entry: {}, Read: {}'.format(
+        return u'User: {}, Entry: {}, Read: {}'.format(
                                                 self.profile.user.username,
                                                 self.entry,
                                                 self.read)
