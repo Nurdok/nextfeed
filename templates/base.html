@@ -1,3 +1,4 @@
+{% load tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,10 +95,10 @@
             </button>
             <a class="brand" href="/">nextfeed</a>
             <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/about">About</a></li>
+              <ul class="nav" id="nav-options">
+                <li {% if_active_url request "home" %}class="active"{% endif_active_url %}><a href="/">Home</a></li>
+                <li {% if_active_url request "dashboard" %}class="active"{% endif_active_url %}><a href="/dashboard">Dashboard</a></li>
+                <li {% if_active_url request "about" %}class="active"{% endif_active_url %}><a href="/about">About</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -126,6 +127,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $('.li a[href*="' + location.pathname.split("/")[1] + '"]').addClass('active');
+    </script>
 
   </body>
 </html>
