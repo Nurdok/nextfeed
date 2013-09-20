@@ -71,14 +71,14 @@
             <tbody>
               {% for feed in user.get_profile.feeds.all %}
               <tr>
-                <td>
+                <td style="width: 1px; white-space: nowrap;">
                     <div class="btn-group">
                         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Mark All Unread</a></li>
-                          <li><a href="#">Mark All Read</a></li>
+                          <li><a href="/action/markunread/{{ feed.id }}">Mark All Unread</a></li>
+                          <li><a href="/action/markread/{{ feed.id }}">Mark All Read</a></li>
                           <li class="divider"></li>
-                          <li><a href="#">Delete</a></li>
+                          <li><a href="/action/delete/{{ feed.id }}">Delete</a></li>
                         </ul>
                     </div>
                 </td>
