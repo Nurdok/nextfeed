@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect
-from profiles.models import UserProfile, UserEntryDetail
+from profiles.models import UserProfile, UserEntryDetail, Subscription
 from django.contrib.auth.models import User
 from feeds.forms import FeedForm
 import feedparser
@@ -57,7 +57,8 @@ class DashboardView(FormView):
         except ObjectDoesNotExist:
             feed_obj = Feed(link=link, title=title)
             feed_obj.save()
-        user.get_profile().feeds.add(feed_obj)
+        profile = user.get_profile()
+        Subscription(profile=profile, feed=feed_obj).save()
         poll_feed(feed_obj)
         return super(DashboardView, self).form_valid(form)
 
@@ -67,7 +68,10 @@ class DashboardView(FormView):
             user.get_profile()
         except:
             UserProfile(user=user).save()
-        return super(DashboardView, self).get_context_data(*args, **kwargs)
+        context = super(DashboardView, self).get_context_data(*args, **kwargs)
+        subscriptions = Subscription.objects.filter(profile=user.get_profile())
+        context['subscriptions'] = subscriptions
+        return context
 
 
 class EditEntriesForFeedView(RedirectView):
