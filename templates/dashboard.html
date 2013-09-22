@@ -69,20 +69,20 @@
     
       <table id="feeds" class="table table-condensed table-hover">
             <tbody>
-              {% for feed in user.get_profile.feeds.all %}
+              {% for subscription in subscriptions %}
               <tr>
                 <td style="width: 1px; white-space: nowrap;">
                     <div class="btn-group">
                         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="/action/markunread/{{ feed.id }}">Mark All Unread</a></li>
-                          <li><a href="/action/markread/{{ feed.id }}">Mark All Read</a></li>
+                          <li><a href="/action/markunread/{{ subscription.feed.id }}">Mark All Unread</a></li>
+                          <li><a href="/action/markread/{{ subscription.feed.id }}">Mark All Read</a></li>
                           <li class="divider"></li>
-                          <li><a href="/action/delete/{{ feed.id }}">Delete</a></li>
+                          <li><a href="/action/delete/{{ subscription.feed.id }}">Delete</a></li>
                         </ul>
                     </div>
                 </td>
-                <td><span class="badge">0</span>&nbsp;&nbsp;{{ feed.title }}</td>
+                <td><span class="badge">{{ subscription.unread_entries_num }}</span>&nbsp;&nbsp;{{ subscription.feed.title }}</td>
               </tr>
             </tbody>
             {% endfor %}

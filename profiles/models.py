@@ -7,7 +7,7 @@ from feeds.models import Entry, Feed
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User)
-    feeds = models.ManyToManyField(to=Feed)
+    feeds = models.ManyToManyField(to=Feed, through='profiles.Subscription')
     entries = models.ManyToManyField(to=Entry,
                                      through='profiles.UserEntryDetail')
     next_slug = RandomSlugField(slug_length=10)
@@ -26,3 +26,17 @@ class UserEntryDetail(models.Model):
                                                 self.profile.user.username,
                                                 self.entry,
                                                 self.read)
+
+
+class Subscription(models.Model):
+    profile = models.ForeignKey(to=UserProfile)
+    feed = models.ForeignKey(to=Feed)
+
+    def unread_entries_num(self):
+        unread_entries = UserEntryDetail.objects.filter(read=False,
+                                                        profile=self.profile,
+                                                        entry__feed=self.feed)
+        return unread_entries.count()
+
+
+
