@@ -185,7 +185,7 @@ from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
     'add-every-30-seconds': {
         'task': 'feeds.tasks.poll_all_feeds',
-        'schedule': timedelta(minutes=30),
+        'schedule': timedelta(minutes=5),
         'args': ()
     },
 }
