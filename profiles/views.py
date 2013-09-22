@@ -101,7 +101,10 @@ class EditEntriesForFeedView(RedirectView):
 
 class DeleteFeedView(EditEntriesForFeedView):
     def edit_feed(self, feed):
-        feed.delete()
+        profile = self.request.user.get_profile()
+        subscription = Subscription.objects.get(feed=feed,
+                                                profile=profile)
+        subscription.delete()
 
 
 class MarkUnreadView(EditEntriesForFeedView):
