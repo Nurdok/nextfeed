@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Feed(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=200)
     link = models.CharField(max_length=1000)
 
     def __unicode__(self):
