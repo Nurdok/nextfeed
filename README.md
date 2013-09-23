@@ -1,6 +1,9 @@
 # nextfeed
 
-A minimalistic RSS reader
+*nextfeed* is a minimalistic RSS reader.
+With *nextfeed*, you define a list of feeds you want to follow, and get a 
+personalized URL. Every time you hit that URL, you'll get the next unread 
+entry in your feeds.
 
 
 ## Development Guide
@@ -9,9 +12,9 @@ A minimalistic RSS reader
 
 If you want to contribute to `nextfeed`, you're welcome!  
 Either pick an existing issue or create a new one and state that you are
-working on it (to prevent people working on the same issue). If you are in a
-"collaborator" status, simply assign the issue to you. Otherwise, post a
-comment saying you're working on it.
+working on it (to make sure nobody else is working on the same issue). If you 
+are in a "collaborator" status, simply assign the issue to yourself. 
+Otherwise, post a comment saying you're working on it.
 
 ### Create a Development Environment
 

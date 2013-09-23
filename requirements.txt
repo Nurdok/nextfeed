@@ -18,3 +18,4 @@ celery==3.0.21
 kombu==2.5.12
 django-celery==3.0.21
 honcho
+mock
