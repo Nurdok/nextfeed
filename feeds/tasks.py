@@ -12,13 +12,6 @@ def poll_feed(feed):
     # Add entries from feed
     entries = parser.entries
     for entry in entries:
-        try:
-            Entry.objects.get(link=entry.link)
-        except ObjectDoesNotExist:
-            pass
-        else:
-            continue
-
         published = time.strftime('%Y-%m-%d %H:%M', entry.published_parsed)
         entry_obj, _ = Entry.objects.get_or_create(feed=feed,
                                                    title=entry.title,
