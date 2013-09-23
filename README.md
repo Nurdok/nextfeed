@@ -1,14 +1,11 @@
-nextfeed
-========
+# nextfeed
 
 A minimalistic RSS reader
 
 
-Development Guide
------------------
+## Development Guide
 
-Work on Issues
-^^^^^^^^^^^^^^
+### Work on Issues
 
 If you want to contribute to `nextfeed`, you're welcome!  
 Either pick an existing issue or create a new one and state that you are
@@ -16,8 +13,7 @@ working on it (to prevent people working on the same issue). If you are in a
 "collaborator" status, simply assign the issue to you. Otherwise, post a
 comment saying you're working on it.
 
-Create a Development Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Create a Development Environment
 
 1. Get a copy of the repository
 ```bash
