@@ -28,16 +28,15 @@ pip install -r requirements.txt
 ```bash
 python manage.py syncdb
 ```
-
 When asked whether to create a superuser, create one. Its details aren't 
 important and are local to your machine.
 
 4. Develop:  
-You can run a test server in one of two ways:
+You can run a test server in one of two ways:  
 ```bash
 python manage.py runserver
 ```
-or
+or  
 ```bash
 honcho start
 ```
