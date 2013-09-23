@@ -5,7 +5,19 @@ A minimalistic RSS reader
 
 
 Development Guide
-=================
+-----------------
+
+Work on Issues
+^^^^^^^^^^^^^^
+
+If you want to contribute to `nextfeed`, you're welcome!  
+Either pick an existing issue or create a new one and state that you are
+working on it (to prevent people working on the same issue). If you are in a
+"collaborator" status, simply assign the issue to you. Otherwise, post a
+comment saying you're working on it.
+
+Create a Development Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Get a copy of the repository
 ```bash
@@ -43,6 +55,7 @@ honcho start
 The difference is that `honcho` also runs a scheduler and worker, which are
 Celery processes that poll feeds for changes. These are probably not important
 in a development machine unless you're testing a polling-specific feature.
+
 
 
 
