@@ -106,6 +106,9 @@ class DeleteFeedView(EditEntriesForFeedView):
                                                 profile=profile)
         subscription.delete()
 
+    def edit_entry(self, entry):
+        entry.delete()
+
 
 class MarkUnreadView(EditEntriesForFeedView):
     def edit_entry(self, entry):
