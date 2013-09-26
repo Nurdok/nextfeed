@@ -1,8 +1,8 @@
-import time
 import feedparser
+from time import mktime
+from datetime import datetime
 from celery import task
 from feeds.models import Feed, Entry
-from django.core.exceptions import ObjectDoesNotExist
 from profiles.models import UserProfile, UserEntryDetail
 
 
@@ -12,7 +12,7 @@ def poll_feed(feed):
     # Add entries from feed
     entries = parser.entries
     for entry in entries:
-        published = time.strftime('%Y-%m-%d %H:%M', entry.published_parsed)
+        published = datetime.fromtimestamp(mktime(entry.published_parsed))
         entry_obj, _ = Entry.objects.get_or_create(feed=feed,
                                                    title=entry.title,
                                                    link=entry.link,

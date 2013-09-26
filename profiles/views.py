@@ -78,45 +78,27 @@ class EditEntriesForFeedView(RedirectView):
     url = "/dashboard"
     permanent = False
 
-    def dispatch(self, request, *args, **kwargs):
-        user = request.user
+    def _get_feed(self):
         feed_id = self.kwargs['id']
-        feed = Feed.objects.get(id=feed_id)
-        self.edit_feed(feed)
-        entries = UserEntryDetail.objects.filter(profile=user.get_profile(),
-                                                 entry__feed=feed)
-        for user_entry in entries:
-            print user_entry
-            self.edit_entry(user_entry)
-        return super(EditEntriesForFeedView, self).dispatch(request,
-                                                            *args,
-                                                            **kwargs)
-
-    def edit_feed(self, feed):
-        pass
-
-    def edit_entry(self, entry):
-        pass
+        return Feed.objects.get(id=feed_id)
 
 
 class DeleteFeedView(EditEntriesForFeedView):
-    def edit_feed(self, feed):
-        profile = self.request.user.get_profile()
-        subscription = Subscription.objects.get(feed=feed,
-                                                profile=profile)
-        subscription.delete()
-
-    def edit_entry(self, entry):
-        entry.delete()
+    def dispatch(self, request, *args, **kwargs):
+        feed = self._get_feed()
+        self.request.user.get_profile().unsubscribe(feed)
+        return super(DeleteFeedView, self).dispatch(request, *args, **kwargs)
 
 
 class MarkUnreadView(EditEntriesForFeedView):
-    def edit_entry(self, entry):
-        entry.read = False
-        entry.save()
+    def dispatch(self, request, *args, **kwargs):
+        feed = self._get_feed()
+        self.request.user.get_profile().mark_unread(feed)
+        return super(MarkUnreadView, self).dispatch(request, *args, **kwargs)
 
 
 class MarkReadView(EditEntriesForFeedView):
-    def edit_entry(self, entry):
-        entry.read = True
-        entry.save()
+    def dispatch(self, request, *args, **kwargs):
+        feed = self._get_feed()
+        self.request.user.get_profile().mark_read(feed)
+        return super(MarkReadView, self).dispatch(request, *args, **kwargs)

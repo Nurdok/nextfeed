@@ -15,6 +15,28 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return u"{}'s profile".format(self.user.username)
 
+    def subscribe(self, feed):
+        Subscription(profile=self, feed=feed).save()
+
+    def unsubscribe(self, feed):
+        Subscription.objects.get(profile=self, feed=feed).delete()
+        self._get_entries(feed).delete()
+
+    def mark_read(self, feed):
+        entries = self._get_entries(feed)
+        for entry in entries:
+            entry.read = True
+            entry.save()
+
+    def mark_unread(self, feed):
+        entries = self._get_entries(feed)
+        for entry in entries:
+            entry.read = False
+            entry.save()
+
+    def _get_entries(self, feed):
+        return UserEntryDetail.objects.filter(profile=self, entry__feed=feed)
+
 
 class UserEntryDetail(models.Model):
     profile = models.ForeignKey(to=UserProfile)

@@ -19,6 +19,6 @@ class FeedForm(ModelForm):
     def clean(self):
         cleaned_data = super(FeedForm, self).clean()
         parser = feedparser.parse(cleaned_data.get('link'))
-        if parser.feed == {}:
+        if parser.feed == {} or parser.status != 200:
             raise ValidationError("The link provided is not a valid feed.")
         return cleaned_data
