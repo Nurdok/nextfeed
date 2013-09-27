@@ -34,6 +34,9 @@ class UserProfile(models.Model):
             entry.read = False
             entry.save()
 
+    def unread_entries(self, feed):
+        return self._get_entries(feed).filter(read=False).count()
+
     def _get_entries(self, feed):
         return UserEntryDetail.objects.filter(profile=self, entry__feed=feed)
 

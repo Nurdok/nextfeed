@@ -1,4 +1,5 @@
-from django.views.generic.base import TemplateView, RedirectView
+import json
+from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect
 from profiles.models import UserProfile, UserEntryDetail, Subscription
@@ -9,6 +10,7 @@ from feeds.models import Feed, Entry
 from django.views.generic.edit import FormView, DeleteView
 from django.core.exceptions import ObjectDoesNotExist
 import time
+from django.http import HttpResponse
 from feeds.tasks import poll_feed
 
 
@@ -102,3 +104,15 @@ class MarkReadView(EditEntriesForFeedView):
         feed = self._get_feed()
         self.request.user.get_profile().mark_read(feed)
         return super(MarkReadView, self).dispatch(request, *args, **kwargs)
+
+
+def subscriptions(request):
+    profile = request.user.get_profile()
+    subscriptions = Subscription.objects.filter(profile=profile)
+    subscriptions_json = [{'id': s.feed.id,
+                           'title': s.feed.title,
+                           'unread_entries': profile.unread_entries(s.feed)}
+                          for s in subscriptions]
+    return HttpResponse(json.dumps(subscriptions_json),
+                        content_type='application/json')
+
