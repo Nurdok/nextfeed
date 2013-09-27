@@ -1,4 +1,4 @@
 language: python
-python:
-  - "2.7"
-script: "python manage.py test feeds"
+python: "2.7"
+install: "pip install -r requirements
+script: "python manage.py test feeds --settings=nextfeed.settings.local"

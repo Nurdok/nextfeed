@@ -175,9 +175,6 @@ LOGGING = {
     }
 }
 
-BROKER_URL = 'amqp://fecnwrea:A9Rx3kA6tGwia4f5qCxptN6hSIASQYjy@bunny.cloudamqp.com/fecnwrea'
-BROKER_POOL_LIMIT = 1
-
 # List of modules to import when celery starts.
 CELERY_IMPORTS = ("feeds.tasks",)
 
@@ -192,9 +189,6 @@ CELERYBEAT_SCHEDULE = {
 
 CELERY_TIMEZONE = 'UTC'
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -208,7 +202,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-static_dir = os.path.join(BASE_DIR, '..', 'static')
+static_dir = os.path.join(BASE_DIR, '../../', 'static')
 dirs = ('nextfeed',
         'bootstrap',
         'jquery',
@@ -216,11 +210,3 @@ dirs = ('nextfeed',
         'zero-clipboard')
 
 STATICFILES_DIRS = tuple(os.path.join(static_dir, dir) for dir in dirs)
-
-
-
-
-try:
-    from local_settings import *
-except:
-    pass
