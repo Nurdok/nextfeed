@@ -1,4 +1,6 @@
-# nextfeed
+# » nextfeed
+
+[![Build Status](https://travis-ci.org/Nurdok/nextfeed.png?branch=master)](https://travis-ci.org/Nurdok/nextfeed)
 
 *nextfeed* is a minimalistic RSS reader.
 With *nextfeed*, you define a list of feeds you want to follow, and get a 
