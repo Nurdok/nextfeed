@@ -1,4 +1,5 @@
 import json
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect
@@ -106,13 +107,27 @@ class MarkReadView(EditEntriesForFeedView):
         return super(MarkReadView, self).dispatch(request, *args, **kwargs)
 
 
-def subscriptions(request):
+def subscription(request):
     profile = request.user.get_profile()
-    subscriptions = Subscription.objects.filter(profile=profile)
-    subscriptions_json = [{'id': s.feed.id,
-                           'title': s.feed.title,
-                           'unread_entries': profile.unread_entries(s.feed)}
-                          for s in subscriptions]
-    return HttpResponse(json.dumps(subscriptions_json),
-                        content_type='application/json')
+    if request.method == "GET":
+        subscriptions = Subscription.objects.filter(profile=profile)
+        subscriptions_json = [{'id': s.feed.id,
+                               'title': s.feed.title,
+                               'unread_entries': profile.unread_entries(s.feed)}
+                              for s in subscriptions]
+        return HttpResponse(json.dumps(subscriptions_json),
+                            content_type='application/json')
+    if request.method == "POST":
+        link = json.loads(request.body)['link']
+        parser = feedparser.parse(link)
+        feed = parser.feed
+        title = feed.title
+        try:
+            feed_obj = Feed.objects.get(link=link)
+        except ObjectDoesNotExist:
+            feed_obj = Feed(link=link, title=title)
+            feed_obj.save()
+        Subscription(profile=profile, feed=feed_obj).save()
+        poll_feed(feed_obj)
+        return HttpResponse()
 
