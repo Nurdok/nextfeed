@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from feeds.forms import FeedForm
 import feedparser
 from feeds.models import Feed, Entry
-from django.views.generic.edit import FormView, DeleteView
+from django.views.generic.edit import FormView
 from django.core.exceptions import ObjectDoesNotExist
 import time
 from django.http import HttpResponse
@@ -86,11 +86,11 @@ class EditEntriesForFeedView(RedirectView):
         return Feed.objects.get(id=feed_id)
 
 
-class DeleteFeedView(EditEntriesForFeedView):
+class UnsubscribeView(EditEntriesForFeedView):
     def dispatch(self, request, *args, **kwargs):
         feed = self._get_feed()
         self.request.user.get_profile().unsubscribe(feed)
-        return super(DeleteFeedView, self).dispatch(request, *args, **kwargs)
+        return super(UnsubscribeView, self).dispatch(request, *args, **kwargs)
 
 
 class MarkUnreadView(EditEntriesForFeedView):

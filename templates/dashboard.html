@@ -62,10 +62,10 @@
                     <div class="btn-group">
                         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="/action/markunread/{[{ subscription.id }]}">Mark All Unread</a></li>
-                          <li><a href="/action/markread/{[{ subscription.id }]}">Mark All Read</a></li>
+                          <li><a href="" ng-click="mark_unread(subscription.id)">Mark All Unread</a></li>
+                          <li><a href="" ng-click="mark_read(subscription.id)">Mark All Read</a></li>
                           <li class="divider"></li>
-                          <li><a href="/action/delete/{[{ subscription.id }]}">Delete</a></li>
+                          <li><a href="" ng-click="unsubscribe(subscription.id)">Unsubscribe</a></li>
                         </ul>
                     </div>
                 </td>
