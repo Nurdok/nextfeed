@@ -75,16 +75,15 @@
           </table>
             
 	</div>
-{% endblock %}    
-
-{% block scripts %}
     <script type="text/javascript" src="{{ STATIC_URL }}js/ZeroClipboard.min.js"></script>
     <script type="text/javascript">
-    var clip = new ZeroClipboard(document.getElementById("copy-button"), {
-          moviePath: "{{ STATIC_URL }}swf/ZeroClipboard.swf"
+        var clip = new ZeroClipboard(document.getElementById("copy-button"), {
+            moviePath: "{{ STATIC_URL }}swf/ZeroClipboard.swf"
         } );
     </script>
-    
+{% endblock %}
+
+{% block scripts %}
     <script type="text/javascript">
     $("#add-feed-btn").click(function() {
         $("#loading-icon").css("visibility", "visible")
