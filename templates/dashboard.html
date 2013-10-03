@@ -44,14 +44,15 @@
 	<hr/>
 	<br/>
 	<div style="width:100%;" ng-controller="SubscriptionController">
-		<h4>Your Feeds &nbsp;&nbsp;&nbsp;<img id="loading-icon" style="visibility: hidden;" src="{{ STATIC_URL }}images/loading-icon.gif"/></h4>
+		<h4>Your Feeds &nbsp;&nbsp;&nbsp;<img id="loading-icon" style="visibility: {[{ loading }]};" src="{{ STATIC_URL }}images/loading-icon.gif"/></h4>
     <div id="url-form-container" style="width: 100%; vertical-align: middle; text-align: center">
         <form class="simple-form">{% csrf_token %}
-            {[{ form_errors }]}
             <div class="input-append">
               <input type="text" placeholder="Paste RSS address here!" id="feed-url-input" ng-model="new_feed_url" />
               <button id="add-feed-btn" class="btn" value="Add Feed" ng-click="add_feed()" >Add Feed</button>
             </div>
+            <br/>
+            {[{ form_errors }]}
         </form>
     </div>
     
@@ -84,10 +85,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript">
-    $("#add-feed-btn").click(function() {
-        $("#loading-icon").css("visibility", "visible")
-    })
-    </script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/dashboard.js"></script>
 {% endblock %}

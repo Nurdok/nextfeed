@@ -1,6 +1,8 @@
 function SubscriptionController($scope, $http) {
     $scope.subscription = [];
     $scope.new_feed_url = "";
+    $scope.loading = "hidden";
+    $scope.form_errors = "";
 
     $scope.update_subscriptions = function() {
         $http({method: 'GET', url: 'subscription'}).
@@ -16,14 +18,20 @@ function SubscriptionController($scope, $http) {
 
     $scope.add_feed = function() {
         console.log('Adding a feed!')
+        $scope.loading = "visible";
+        $scope.form_errors = "";
         $http({method: 'POST', url: 'subscription',
                data: {'link': $scope.new_feed_url}})
             .success(function(data, status, headers, config) {
                 $scope.update_subscriptions()
                 $scope.new_feed_url = ""
+                $scope.loading = "hidden";
             })
             .error(function(data, status, headers, config) {
                 console.log("Adding feed failed!")
+                $scope.form_errors = "Invalid feed!";
+                $scope.new_feed_url = "";
+                $scope.loading = "hidden";
             }
         )
     };
