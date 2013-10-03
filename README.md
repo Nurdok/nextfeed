@@ -1,6 +1,7 @@
 # » nextfeed
 
 [![Build Status](https://travis-ci.org/Nurdok/nextfeed.png?branch=master)](https://travis-ci.org/Nurdok/nextfeed)
+[![Coverage Status](https://coveralls.io/repos/Nurdok/nextfeed/badge.png?branch=master)](https://coveralls.io/r/Nurdok/nextfeed?branch=master)
 
 *nextfeed* is a minimalistic RSS reader.
 With *nextfeed*, you define a list of feeds you want to follow, and get a 
