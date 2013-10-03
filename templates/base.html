@@ -8,7 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon" />
+    <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon"/>
+
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-cookies.min.js"></script>
+    <script src="{{ STATIC_URL }}js/main.js"></script>
+    {% block scripts %}{% endblock %}
 
     <!-- CSS -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
@@ -79,7 +86,7 @@
   {% block head-appendix %}{% endblock %}
   </head>
 
-  <body>
+  <body ng-app="nextfeedApp">
 
 
     <!-- Part 1: Wrap all page content here -->
@@ -120,18 +127,6 @@
         <p class="muted credit">Created by <a href="http://blog.amir.rachum.com">Amir Rachum</a> and <a href="#">Yaniv Libal</a>.</p>
       </div>
     </div>
-
-
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ STATIC_URL }}js/jquery.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
-    <script type="text/javascript">
-        $('.li a[href*="' + location.pathname.split("/")[1] + '"]').addClass('active');
-    </script>
-    {% block scripts %}{% endblock %}
 
   </body>
 </html>

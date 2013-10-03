@@ -2,10 +2,6 @@
 
 {% block title %}dashboard{% endblock %}
 
-{% block head-appendix %}
-    <script type="text/javascript" src="{{ STATIC_URL }}js/ZeroClipboard.min.js"></script>
-{% endblock %}
-
 {% block content %}
 	<div style="width:100%;">
 		<h4>Your Personalized URL</h4>
@@ -47,60 +43,47 @@
 	<br/>
 	<hr/>
 	<br/>
-	<div style="width:100%;">
-		<h4>Your Feeds &nbsp;&nbsp;&nbsp;<img id="loading-icon" style="visibility: hidden;" src="{{ STATIC_URL }}images/loading-icon.gif"/></h4>
+	<div style="width:100%;" ng-controller="SubscriptionController">
+		<h4>Your Feeds &nbsp;&nbsp;&nbsp;<img id="loading-icon" style="visibility: {[{ loading }]};" src="{{ STATIC_URL }}images/loading-icon.gif"/></h4>
     <div id="url-form-container" style="width: 100%; vertical-align: middle; text-align: center">
-    <!--
-        <form>
-            <div class="control-group info" style="text-align: center; width:100%;">
-        		<input id="feed-url" type="text" min="50" class="login-field active" placeholder="Paste RSS feed here!"></input>
-            </div>
-    	    <button class="label label-success btn-inverse btn" id="add-feed-button">Add Feed</button>
-        </form>
-        -->
-        <form action="#" method="post">{% csrf_token %}
-            {{ form.non_field_errors }}
+        <form class="simple-form">{% csrf_token %}
             <div class="input-append">
-              {{ form.link }}
-              <input type="submit" id="add-feed-btn" class="btn" type="button" value="Add Feed" />
+              <input type="text" placeholder="Paste RSS address here!" id="feed-url-input" ng-model="new_feed_url" />
+              <button id="add-feed-btn" class="btn" value="Add Feed" ng-click="add_feed()" >Add Feed</button>
             </div>
+            <br/>
+            {[{ form_errors }]}
         </form>
     </div>
     
       <table id="feeds" class="table table-condensed table-hover">
             <tbody>
-              {% for subscription in subscriptions %}
-              <tr>
+              <tr ng-repeat="subscription in subscriptions">
                 <td style="width: 1px; white-space: nowrap;">
                     <div class="btn-group">
                         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="/action/markunread/{{ subscription.feed.id }}">Mark All Unread</a></li>
-                          <li><a href="/action/markread/{{ subscription.feed.id }}">Mark All Read</a></li>
+                          <li><a href="" ng-click="mark_unread(subscription.id)">Mark All Unread</a></li>
+                          <li><a href="" ng-click="mark_read(subscription.id)">Mark All Read</a></li>
                           <li class="divider"></li>
-                          <li><a href="/action/delete/{{ subscription.feed.id }}">Delete</a></li>
+                          <li><a href="" ng-click="unsubscribe(subscription.id)">Unsubscribe</a></li>
                         </ul>
                     </div>
                 </td>
-                <td><span class="badge">{{ subscription.unread_entries_num }}</span>&nbsp;&nbsp;{{ subscription.feed.title }}</td>
+                <td><span class="badge">{[{ subscription.unread_entries }]}</span>&nbsp;&nbsp;{[{ subscription.title }]}</td>
               </tr>
             </tbody>
-            {% endfor %}
           </table>
             
 	</div>
-{% endblock %}    
-
-{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/ZeroClipboard.min.js"></script>
     <script type="text/javascript">
-    var clip = new ZeroClipboard(document.getElementById("copy-button"), {
-          moviePath: "{{ STATIC_URL }}swf/ZeroClipboard.swf"
+        var clip = new ZeroClipboard(document.getElementById("copy-button"), {
+            moviePath: "{{ STATIC_URL }}swf/ZeroClipboard.swf"
         } );
     </script>
-    
-    <script type="text/javascript">
-    $("#add-feed-btn").click(function() {
-        $("#loading-icon").css("visibility", "visible")
-    })
-    </script>
-{% endblock %}    
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/dashboard.js"></script>
+{% endblock %}
