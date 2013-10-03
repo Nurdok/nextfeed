@@ -2,3 +2,4 @@ language: python
 python: "2.7"
 install: "pip install -r nextfeed/requirements/ci.txt"
 script: "coverage run --source=feeds,profiles manage.py test feeds profiles --settings=nextfeed.settings.ci"
+after_success: "coveralls"
