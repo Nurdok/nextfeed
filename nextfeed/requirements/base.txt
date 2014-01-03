@@ -13,3 +13,4 @@ billiard==2.7.3.31
 celery==3.0.22
 kombu==2.5.12
 django-celery==3.0.21
+opml

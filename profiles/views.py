@@ -52,6 +52,8 @@ class DashboardView(FormView):
     def form_valid(self, form):
         user = self.request.user
         link = form.cleaned_data['link']
+        if not link.startswith('http://'):
+            link = 'http://{}'.format(link)
         parser = feedparser.parse(link)
         feed = parser.feed
         title = feed.title
@@ -119,6 +121,8 @@ def subscription(request):
                             content_type='application/json')
     if request.method == "POST":
         link = json.loads(request.body)['link']
+        if not link.startswith('http://'):
+            link = 'http://{}'.format(link)
         parser = feedparser.parse(link)
         feed = parser.feed
         title = feed.title
@@ -127,7 +131,7 @@ def subscription(request):
         except ObjectDoesNotExist:
             feed_obj = Feed(link=link, title=title)
             feed_obj.save()
-        Subscription(profile=profile, feed=feed_obj).save()
+        Subscription.objects.get_or_create(profile=profile, feed=feed_obj)
         poll_feed(feed_obj)
         return HttpResponse()
 
