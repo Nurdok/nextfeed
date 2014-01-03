@@ -74,7 +74,7 @@ openid = {
 		var y = box_size == 'small' ? -60 : 0;
 		return '<a title="' + this.image_title.replace('{provider}', provider["name"]) + '" href="javascript:openid.signin(\'' + box_id + '\');"'
 				+ ' style="background: #FFF url(' + this.img_path + 'openid-providers-' + this.sprite + '.png); background-position: ' + x + 'px ' + y + 'px" '
-				+ 'class="' + box_id + ' openid_' + box_size + '_btn"></a>';
+				+ 'class="' + box_id + ' openid_' + box_size + '_btn span3"></a>';
 	},
 
 	/**

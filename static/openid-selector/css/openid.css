@@ -7,6 +7,7 @@
 
 #openid_form {
 	width: 580px;
+    max-width: 90%;
 }
 
 #openid_form legend {

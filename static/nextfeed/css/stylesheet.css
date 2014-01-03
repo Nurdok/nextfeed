@@ -2,3 +2,9 @@
      background-color: #4e6d8d;
      color: white;
  }
+
+@media (max-width: 978px) {
+    #wrap > .container {
+      padding-top:0;
+    }
+}
