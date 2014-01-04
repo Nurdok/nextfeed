@@ -10,8 +10,10 @@ TEMPLATE_DEBUG = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
-    ("Amir Rachum", "amir@rachum.com")
+    ("Amir Rachum", "amir@rachum.com"),
 )
+
+SERVER_EMAIL = 'webmaster@nextfeed.org'
 
 MANAGERS = ADMINS
 
