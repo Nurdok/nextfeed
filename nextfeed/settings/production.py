@@ -11,3 +11,6 @@ DATABASES['default'] = dj_database_url.config()
 DEBUG = False
 TEMPLATE_DEBUG = False
 
+INSTALLED_APPS += (
+    'raven.contrib.django.raven_compat',
+)

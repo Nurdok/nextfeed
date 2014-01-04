@@ -4,3 +4,4 @@ dj-database-url==0.2.1
 dj-static==0.0.5
 psycopg2==2.5.1
 amqp==1.0.13
+raven>=3
