@@ -12,6 +12,7 @@ def poll_feed(feed):
     # Add entries from feed
     entries = parser.entries
     for entry in entries:
+        print entry.keys()
         published = datetime.fromtimestamp(mktime(entry.published_parsed))
         entry_obj, _ = Entry.objects.get_or_create(feed=feed,
                                                    title=entry.title,
