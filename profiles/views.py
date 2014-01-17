@@ -2,7 +2,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, Http404
 from profiles.models import UserProfile, UserEntryDetail, Subscription
 from django.contrib.auth.models import User
 from feeds.forms import FeedForm
@@ -32,7 +32,10 @@ class NextView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         subscription = self.request.GET['subscription']
-        profile = UserProfile.objects.get(next_slug=subscription)
+        try:
+            profile = UserProfile.objects.get(next_slug=subscription)
+        except Exception:
+            raise Http404()
         entries = profile.entries.filter(userentrydetail__read=False)
         if not entries.exists():
             return '/noentries'
