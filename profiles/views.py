@@ -131,7 +131,7 @@ def subscription(request):
         try:
             title = feed.title
         except AttributeError:
-            return HttpResponseBadRequest('Invalid feed.')
+            return HttpResponseBadRequest('Invalid feed')
         try:
             feed_obj = Feed.objects.get(link=link)
         except ObjectDoesNotExist:
@@ -139,11 +139,11 @@ def subscription(request):
             feed_obj.save()
         if Subscription.objects.filter(profile=profile, feed=feed_obj).exists():
             return HttpResponseBadRequest('You are already subscribed to this '
-                                          'feed.')
+                                          'feed')
         Subscription.objects.get_or_create(profile=profile, feed=feed_obj)
         try:
             poll_feed(feed_obj)
         except AttributeError:
-            return HttpResponseBadRequest('Invalid feed.')
+            return HttpResponseBadRequest('Invalid feed')
         return HttpResponse()
 
