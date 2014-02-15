@@ -32,6 +32,7 @@ function SubscriptionController($scope, $http) {
                 $scope.form_errors = "Invalid feed!";
                 $scope.new_feed_url = "";
                 $scope.loading = "hidden";
+                $scope.update_subscriptions()
             }
         )
     };

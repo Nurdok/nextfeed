@@ -2,7 +2,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
-from django.http.response import HttpResponseRedirect, Http404
+from django.http.response import HttpResponseRedirect, Http404, HttpResponseBadRequest
 from profiles.models import UserProfile, UserEntryDetail, Subscription
 from django.contrib.auth.models import User
 from feeds.forms import FeedForm
@@ -135,6 +135,9 @@ def subscription(request):
             feed_obj = Feed(link=link, title=title)
             feed_obj.save()
         Subscription.objects.get_or_create(profile=profile, feed=feed_obj)
-        poll_feed(feed_obj)
+        try:
+            poll_feed(feed_obj)
+        except AttributeError:
+            return HttpResponseBadRequest('Invalid feed.')
         return HttpResponse()
 

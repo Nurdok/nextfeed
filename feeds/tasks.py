@@ -7,12 +7,17 @@ from profiles.models import UserProfile, UserEntryDetail
 
 
 def poll_feed(feed):
+    """Poll entries from a feed."""
     parser = feedparser.parse(feed.link)
 
     # Add entries from feed
     entries = parser.entries
     for entry in entries:
-        published = datetime.fromtimestamp(mktime(entry.published_parsed))
+        try:
+            published_parsed = entry.published_parsed
+        except AttributeError:  # an Atom feed
+            published_parsed = entry.updated_parsed
+        published = datetime.fromtimestamp(mktime(published_parsed))
         entry_obj, _ = Entry.objects.get_or_create(feed=feed,
                                                    title=entry.title,
                                                    link=entry.link,
