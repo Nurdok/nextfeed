@@ -28,8 +28,12 @@ function SubscriptionController($scope, $http) {
                 $scope.loading = "hidden";
             })
             .error(function(data, status, headers, config) {
+                if (status == 400) {
+                    $scope.form_errors = data;
+                } else {
+                    $scope.form_errors = "Invalid feed!";
+                }
                 console.log("Adding feed failed!")
-                $scope.form_errors = "Invalid feed!";
                 $scope.new_feed_url = "";
                 $scope.loading = "hidden";
                 $scope.update_subscriptions()
