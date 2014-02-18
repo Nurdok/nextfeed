@@ -44,6 +44,10 @@ class PollFeedTest(TestCase):
         self.profile2 = UserProfile(user=user2)
         self.profile2.save()
 
+    def test_profile_display(self):
+        self.assertEqual(str(self.profile1), "user1's profile")
+        self.assertEqual(str(self.profile2), "user2's profile")
+
     @mock.patch('feedparser.parse')
     def test_poll_new_subscriber(self, mock_parse):
         """Test a successful polling of a feed."""
@@ -162,16 +166,26 @@ class PollFeedTest(TestCase):
         self.assertEqual(Entry.objects.count(), 2)
         self.assertEqual(UserEntryDetail.objects.count(), 2)
 
-    #@mock.patch('feedparser.parse')
-    #def test_poll_invalid_url(self, mock_parse):
-        ## Set up mock data
-        #mock_parse.return_value = {}
-#
-        ## Verify initial state
-        #self.assertEqual(Feed.objects.count(), 1)
-        #self.assertEqual(Entry.objects.count(), 0)
-        #self.assertEqual(UserEntryDetail.objects.count(), 0)
-#
-        ## Perform poll
-        #tasks.poll_feed(self.feed)
+    @mock.patch('feedparser.parse')
+    def test_mark_read_unread(self, mock_parse):
+        parser = mock.MagicMock()
+        parser.entries = [self.entry1, self.entry2]
+        mock_parse.return_value = parser
+
+        unread_entries = self.profile1.unread_entries(self.feed)
+        self.assertEqual(unread_entries, 0)
+
+        self.profile1.subscribe(self.feed)
+        tasks.poll_feed(self.feed)
+        unread_entries = self.profile1.unread_entries(self.feed)
+        self.assertEqual(unread_entries, 2)
+
+        self.profile1.mark_read(self.feed)
+        unread_entries = self.profile1.unread_entries(self.feed)
+        self.assertEqual(unread_entries, 0)
+
+        self.profile1.mark_unread(self.feed)
+        unread_entries = self.profile1.unread_entries(self.feed)
+        self.assertEqual(unread_entries, 2)
+
 

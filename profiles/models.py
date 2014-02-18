@@ -6,6 +6,7 @@ from feeds.models import Entry, Feed
 
 
 class UserProfile(models.Model):
+    """A user profile."""
     user = models.ForeignKey(User)
     feeds = models.ManyToManyField(to=Feed, through='profiles.Subscription')
     entries = models.ManyToManyField(to=Entry,
@@ -16,7 +17,7 @@ class UserProfile(models.Model):
         return u"{}'s profile".format(self.user.username)
 
     def subscribe(self, feed):
-        Subscription(profile=self, feed=feed).save()
+        Subscription.objects.create(profile=self, feed=feed)
 
     def unsubscribe(self, feed):
         Subscription.objects.get(profile=self, feed=feed).delete()

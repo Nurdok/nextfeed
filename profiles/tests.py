@@ -8,9 +8,6 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
+class ProfileTests(TestCase):
+    def test_subscribe(self):
         self.assertEqual(1 + 1, 2)
