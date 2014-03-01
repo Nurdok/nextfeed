@@ -14,7 +14,7 @@
         <div class="modal-footer">
             {[{ form_state }]}
             <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-            <button class="btn btn-primary" ng-click="ok(summary, details)" ng-disabled="form.$invalid || is_sending">{[{ button_text }]}</button>
+            <button class="btn btn-{[{ button_type }]}" ng-click="ok(summary, details)" ng-disabled="form.$invalid || is_sending">{[{ button_text }]}</button>
         </div>
     </script>
 
