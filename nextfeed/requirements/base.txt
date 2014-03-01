@@ -14,3 +14,4 @@ celery==3.0.22
 kombu==2.5.12
 django-celery==3.0.21
 opml
+requests==2.2.1

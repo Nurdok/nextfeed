@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect, Http404, HttpResponseBadRequest
+from profiles.forms import ReportForm
 from profiles.models import UserProfile, UserEntryDetail, Subscription
 from django.contrib.auth.models import User
 from feeds.forms import FeedForm
@@ -13,6 +14,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import time
 from django.http import HttpResponse
 from feeds.tasks import poll_feed
+from profiles.tasks import report_issue
 
 
 class HomeView(TemplateView):
@@ -147,3 +149,12 @@ def subscription(request):
             return HttpResponseBadRequest('Invalid feed')
         return HttpResponse()
 
+
+class ReportView(TemplateView):
+
+    def post(self, request):
+        report_form = ReportForm(request.POST)
+        if report_form.is_valid():
+            report_issue(report_form.cleaned_data['summary'],
+                         report_form.cleaned_data['details'])
+        return HttpResponseRedirect(request.GET['next'])

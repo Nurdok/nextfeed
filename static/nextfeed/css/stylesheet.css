@@ -8,3 +8,8 @@
       padding-top:0;
     }
 }
+
+#id_summary, #id_details {
+    width: 95%;
+}
+

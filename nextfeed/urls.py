@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import admin
 from profiles.views import (NextView, DashboardView, HomeView, NoEntriesView,
                             AboutView, MarkUnreadView, MarkReadView,
-                            UnsubscribeView, subscription)
+                            UnsubscribeView, subscription, ReportView)
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^action/markread/(?P<id>\d+)/?$', MarkReadView.as_view()),
     url(r'^action/unsubscribe/(?P<id>\d+)/?$', UnsubscribeView.as_view()),
     url(r'^subscription/?$', subscription),
+    url(r'^report/?$', ReportView.as_view()),
 )

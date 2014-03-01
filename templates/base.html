@@ -126,6 +126,28 @@
 
       <!-- Begin page content -->
       <div class="container">
+
+        <div class="modal fade" id="report_issue_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <form action="/report?next={{ request.path }}" method="post">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Report an Issue</h4>
+              </div>
+              <div class="modal-body">
+                {% csrf_token %}
+                {{ report_form.as_p }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input class="btn btn-primary" type="submit" value="Send" />
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
         {% block content %}
         {% endblock %}
       </div>
@@ -137,7 +159,12 @@
     <br class="visible-phone"/>
     <div id="footer">
       <div class="container">
-        <p class="muted credit">Created by <a href="http://blog.amir.rachum.com">Amir Rachum</a></p>
+        <p class="muted credit" style="float:left">Created by <a href="http://blog.amir.rachum.com">Amir Rachum</a></p>
+        <p class="muted credit" style="float:right">
+          <a href="#" data-toggle="modal" data-target="#report_issue_modal">
+            Report an issue
+          </a>
+        </p>
       </div>
     </div>
 

@@ -122,6 +122,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
+    'profiles.context_processors.report_issue_form',
+    'django.core.context_processors.request',
 )
 
 INSTALLED_APPS = (
@@ -217,3 +219,9 @@ dirs = ('nextfeed',
         'zero-clipboard')
 
 STATICFILES_DIRS = tuple(os.path.join(static_dir, dir) for dir in dirs)
+
+try:
+    GITHUB_API_KEY = os.environ['GITHUB_API_KEY']
+except KeyError:
+    GITHUB_API_KEY = ""
+
