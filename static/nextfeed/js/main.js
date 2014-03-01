@@ -1,4 +1,4 @@
-var app = angular.module('nextfeedApp', ['ngCookies']);
+var app = angular.module('nextfeedApp', ['ngCookies', 'ui.bootstrap']);
 
 app.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{')

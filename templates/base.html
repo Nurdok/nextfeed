@@ -14,7 +14,11 @@
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-cookies.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+
+
     <script src="{{ STATIC_URL }}js/main.js"></script>
+    <script src="{{ STATIC_URL }}js/report_issue.js"></script>
     {% block scripts %}{% endblock %}
 
     <!-- CSS -->
@@ -127,26 +131,6 @@
       <!-- Begin page content -->
       <div class="container">
 
-        <div class="modal fade" id="report_issue_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <form action="/report?next={{ request.path }}" method="post">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Report an Issue</h4>
-              </div>
-              <div class="modal-body">
-                {% csrf_token %}
-                {{ report_form.as_p }}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <input class="btn btn-primary" type="submit" value="Send" />
-              </div>
-            </form>
-            </div>
-          </div>
-        </div>
 
         {% block content %}
         {% endblock %}
@@ -160,11 +144,7 @@
     <div id="footer">
       <div class="container">
         <p class="muted credit" style="float:left">Created by <a href="http://blog.amir.rachum.com">Amir Rachum</a></p>
-        <p class="muted credit" style="float:right">
-          <a href="#" data-toggle="modal" data-target="#report_issue_modal">
-            Report an issue
-          </a>
-        </p>
+            {% include "report_issue_modal.html" %}
       </div>
     </div>
 

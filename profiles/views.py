@@ -1,4 +1,5 @@
 import json
+
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView, RedirectView, View
 from django.views.generic.detail import DetailView
@@ -153,8 +154,12 @@ def subscription(request):
 class ReportView(TemplateView):
 
     def post(self, request):
-        report_form = ReportForm(request.POST)
+        data = json.loads(request.body)
+        report_form = ReportForm({'summary': data[u'summary'],
+                                  'details': data[u'details']})
         if report_form.is_valid():
             report_issue(report_form.cleaned_data['summary'],
                          report_form.cleaned_data['details'])
-        return HttpResponseRedirect(request.GET['next'])
+        else:
+            return HttpResponseBadRequest('Form was invalid: {}'.format(report_form.errors))
+        return HttpResponse("Report was submitted!")

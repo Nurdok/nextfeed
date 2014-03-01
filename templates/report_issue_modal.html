@@ -1,0 +1,24 @@
+<p ng-controller="ReportIssueController" class="muted credit" style="float: right">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Report an Issue</h4>
+        </div>
+        <div class="modal-body">
+            <label>Summary:</label>
+            <input ng-model="summary" class="form-control" id="id_summary" name="summary" required="required" type="text"/>
+            <label>Details:</label>
+            <textarea ng-model="details" cols="40" id="id_details" name="details" rows="10"></textarea>
+            {% csrf_token %}
+        </div>
+        <div class="modal-footer">
+            {[{ form_state }]}
+            <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+            <button class="btn btn-primary" ng-click="ok(summary, details)" ng-disabled="form.$invalid || is_sending">{[{ button_text }]}</button>
+        </div>
+    </script>
+
+    <a href="#" ng-click="open()">
+        Report an issue
+    </a>
+</p>
