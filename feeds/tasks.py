@@ -1,3 +1,4 @@
+from django.core.exceptions import MultipleObjectsReturned
 import feedparser
 from time import mktime
 from datetime import datetime
@@ -18,10 +19,13 @@ def poll_feed(feed):
         except AttributeError:  # an Atom feed
             published_parsed = entry.updated_parsed
         published = datetime.fromtimestamp(mktime(published_parsed))
-        entry_obj, _ = Entry.objects.get_or_create(feed=feed,
-                                                   title=entry.title,
-                                                   link=entry.link,
-                                                   published=published)
+        try:
+            entry_obj, _ = Entry.objects.get_or_create(feed=feed,
+                                                       title=entry.title,
+                                                       link=entry.link,
+                                                       published=published)
+        except MultipleObjectsReturned:
+            pass
 
         subscribers = UserProfile.objects.filter(feeds=feed)
         for profile in subscribers:
